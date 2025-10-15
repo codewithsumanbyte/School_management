@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block title %}Login | School Portal{% endblock %}
+{% block content %}
+
+<style>
+  /* 🌟 Premium Login Card */
+  .login-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    box-shadow: 0 10px 30px rgba(13, 110, 253, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .login-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(13, 110, 253, 0.25);
+  }
+
+  .login-card h3 {
+    font-weight: 700;
+    color: #084298;
+    margin-bottom: 1.5rem;
+    animation: fadeInDown 1s ease;
+  }
+
+  .form-label {
+    font-weight: 600;
+    color: #084298;
+  }
+
+  input.form-control {
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  }
+  input:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 8px rgba(13,110,253,0.3);
+  }
+
+  .btn-login {
+    background: linear-gradient(90deg, #0d6efd, #0044cc);
+    color: #fff;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 12px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+  }
+  .btn-login:hover {
+    background: linear-gradient(90deg, #0044cc, #0d6efd);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  }
+
+  .text-center a {
+    color: #0d6efd;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .text-center a:hover {
+    text-decoration: underline;
+  }
+
+  /* Animations */
+  @keyframes fadeInDown {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
+  /* Responsive Padding */
+  @media (max-width: 576px) {
+    .login-card {
+      padding: 2rem 1rem;
+    }
+  }
+</style>
+
+<div class="row justify-content-center py-5">
+  <div class="col-lg-5 col-md-6">
+    <div class="login-card">
+      <h3 class="text-center">Login to Your Account</h3>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <form method="POST" novalidate>
+        <div class="mb-3">
+          <label class="form-label">Username</label>
+          <input type="text" name="username" class="form-control" placeholder="Enter your username" required autofocus>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" class="btn btn-login w-100 mt-2">Login 🚀</button>
+      </form>
+
+      <p class="mt-4 text-center text-muted">Don't have an account? 
+        <a href="{{ url_for('register') }}">Register here</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

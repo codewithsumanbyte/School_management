@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block title %}Contact Us{% endblock %}
+{% block content %}
+<section class="contact-section py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold text-primary">Get in Touch With Us</h2>
+      <p class="text-muted">We’re always here to help you with your queries. Feel free to reach out anytime!</p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Contact Info -->
+      <div class="col-md-5">
+        <div class="contact-info p-4 rounded-4 shadow-lg bg-white">
+          <h4 class="mb-3 text-primary fw-bold">Contact Information</h4>
+          <p><i class="bi bi-geo-alt-fill text-danger"></i> &nbsp; <strong>Address:</strong> SUB DIV, Hospital Road, SADAR BAZAR PS, DIST, Barrackpore, West Bengal 700120</p>
+          <p><i class="bi bi-telephone-fill text-success"></i> &nbsp; <strong>Phone:</strong> +91 82729 21929</p>
+          <p><i class="bi bi-envelope-fill text-info"></i> &nbsp; <strong>Email:</strong>  bkpcv1980@gmail.com </p>
+
+          <hr>
+          <h5 class="mt-3 text-secondary">Follow Us</h5>
+          <div class="social-icons mt-2">
+            <a href="#" class="text-primary fs-4 me-3"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-danger fs-4 me-3"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-info fs-4 me-3"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="text-danger fs-4"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="col-md-7">
+        <div class="contact-form p-4 rounded-4 shadow-lg bg-light">
+          <form method="POST" action="{{ url_for('contact') }}">
+            <div class="mb-3">
+              <label class="form-label">Full Name</label>
+              <input type="text" name="name" class="form-control" placeholder="Enter your name" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email Address</label>
+              <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Subject</label>
+              <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Message</label>
+              <textarea name="message" class="form-control" rows="5" placeholder="Write your message here..." required></textarea>
+            </div>
+            <div class="text-end">
+              <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill shadow-sm">Send Message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Google Map -->
+    <div class="mt-5 rounded-4 overflow-hidden shadow-lg">
+           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3678.73812724898!2d88.34506357385698!3d22.77509772552081!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89ae95bda4725%3A0x43be4d86420d4da6!2sBARRACKPORE%20CANTONMENT%20VIDYAPITH%20(%20H.S)!5e0!3m2!1sen!2sin!4v1760459758626!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+   
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    background: linear-gradient(120deg, #e3f2fd, #e8f5e9);
+    min-height: 100vh;
+  }
+  .contact-form input, .contact-form textarea {
+    border-radius: 12px;
+  }
+  .contact-info i {
+    font-size: 1.3rem;
+  }
+  .social-icons a {
+    transition: transform 0.3s;
+  }
+  .social-icons a:hover {
+    transform: scale(1.2);
+  }
+</style>
+{% endblock %}

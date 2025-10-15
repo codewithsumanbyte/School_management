@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% block title %}Admission Form | School Portal{% endblock %}
+{% block content %}
+
+<style>
+  /* ✨ Premium Form Design Enhancements */
+  .form-wrapper {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(13, 110, 253, 0.15);
+    padding: 3rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .form-wrapper:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 35px rgba(13, 110, 253, 0.25);
+  }
+
+  .form-label {
+    font-weight: 600;
+    color: #084298;
+  }
+
+  input.form-control, textarea.form-control, select.form-select {
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 8px rgba(13,110,253,0.3);
+  }
+
+  .btn-gradient {
+    background: linear-gradient(90deg, #00b09b, #96c93d);
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+  }
+  .btn-gradient:hover {
+    background: linear-gradient(90deg, #96c93d, #00b09b);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  }
+
+  h2 {
+    letter-spacing: 0.5px;
+  }
+</style>
+
+<div class="row justify-content-center py-4">
+  <div class="col-lg-10 col-xl-8">
+    <div class="form-wrapper">
+      <h2 class="text-center text-primary fw-bold mb-3">Student Admission Form</h2>
+      <p class="text-center text-muted mb-4">Please fill in your accurate details to proceed with admission.</p>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+  <form method="POST" enctype="multipart/form-data" novalidate>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">Full Name</label>
+            <input type="text" name="name" class="form-control" placeholder="Enter your full name" required autofocus>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" placeholder="example@gmail.com" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Stream</label>
+            <input type="text" name="stream" class="form-control" placeholder="Science / Commerce / Arts" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Passing Year</label>
+            <input type="text" name="passing_year" class="form-control" placeholder="e.g. 2024" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Board</label>
+            <input type="text" name="board" class="form-control" placeholder="CBSE / ICSE / State Board" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">School Name</label>
+            <input type="text" name="school_name" class="form-control" placeholder="Your previous school" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Percentage</label>
+            <input type="number" step="0.01" name="percentage" class="form-control" placeholder="e.g. 89.5" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Roll No</label>
+            <input type="text" name="roll" class="form-control" placeholder="Board roll number" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Caste</label>
+            <input type="text" name="caste" class="form-control" placeholder="General / OBC / SC / ST">
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Citizenship</label>
+            <input type="text" name="citizenship" class="form-control" placeholder="Indian / Other">
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">State</label>
+            <input type="text" name="state" class="form-control" placeholder="e.g. West Bengal">
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">PIN Code</label>
+            <input type="text" name="pin_code" class="form-control" placeholder="e.g. 700001">
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <label class="form-label">Address</label>
+          <textarea name="address" rows="2" class="form-control" placeholder="Enter your full address" required></textarea>
+        </div>
+        <div class="mt-3">
+          <label class="form-label">Message (Optional)</label>
+          <textarea name="message" rows="2" class="form-control" placeholder="Anything you'd like to share"></textarea>
+        </div>
+        <div class="mt-3">
+          <label class="form-label">Upload 10th Marksheet (PDF/JPG)</label>
+          <input type="file" name="marksheet_10th" class="form-control" accept=".pdf,.jpg,.jpeg,.png">
+        </div>
+
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-gradient w-100 py-3">🚀 Submit Application</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ensures video fills screen without distortion */
+  z-index: -1;       /* push behind content */
+  opacity: 0.7;      /* slight transparency for better readability */
+}
+
+/* Optional: Overlay for better contrast */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.15); /* soft white overlay */
+  z-index: 0;
+}

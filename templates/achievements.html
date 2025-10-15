@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% block title %}Achievements{% endblock %}
+{% block content %}
+<section class="achievements-section py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold text-primary display-5">Our Achievements</h2>
+      <p class="text-muted fs-5">Celebrating the milestones and excellence of our students and faculty that make us proud every year!</p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Achievement 1 -->
+      <div class="col-md-4">
+        <div class="achievement-card shadow-lg rounded-4 overflow-hidden bg-white">
+          <img src="{{ url_for('static', filename='achievement1.jpg') }}" class="w-100 achievement-img" alt="Achievement 1">
+          <div class="p-4">
+            <h5 class="fw-bold text-primary">District Science Fair Winner</h5>
+            <p class="text-muted small">Students won 1st place for their renewable energy project.</p>
+            <button class="btn btn-outline-primary btn-sm mt-2 rounded-pill" data-bs-toggle="modal" data-bs-target="#modal1">
+              View More
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Achievement 2 -->
+      <div class="col-md-4">
+        <div class="achievement-card shadow-lg rounded-4 overflow-hidden bg-white">
+          <img src="{{ url_for('static', filename='achievement2.jpg') }}" class="w-100 achievement-img" alt="Achievement 2">
+          <div class="p-4">
+            <h5 class="fw-bold text-primary">State-Level Sports Championship</h5>
+            <p class="text-muted small">Our football team emerged as State Champions!</p>
+            <button class="btn btn-outline-primary btn-sm mt-2 rounded-pill" data-bs-toggle="modal" data-bs-target="#modal2">
+              View More
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Achievement 3 -->
+      <div class="col-md-4">
+        <div class="achievement-card shadow-lg rounded-4 overflow-hidden bg-white">
+          <img src="{{ url_for('static', filename='achievement3.jpg') }}" class="w-100 achievement-img" alt="Achievement 3">
+          <div class="p-4">
+            <h5 class="fw-bold text-primary">Top Academic Results</h5>
+            <p class="text-muted small">Achieved a record 98% success rate in board exams.</p>
+            <button class="btn btn-outline-primary btn-sm mt-2 rounded-pill" data-bs-toggle="modal" data-bs-target="#modal3">
+              View More
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MODALS ===================== -->
+
+<!-- Modal 1 -->
+<div class="modal fade" id="modal1" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content rounded-4 shadow-lg">
+      <div class="modal-header border-0">
+        <h5 class="modal-title text-primary fw-bold">District Science Fair Winner</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <img src="{{ url_for('static', filename='achievement1.jpg') }}" class="w-100 rounded-3 mb-3" alt="">
+        <p class="text-muted">Our students showcased an innovative “Solar-Powered Water Purifier” at the 2025 District Science Exhibition and secured the 1st prize among 50 schools. The project aimed to provide sustainable drinking water solutions for rural areas.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 2 -->
+<div class="modal fade" id="modal2" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content rounded-4 shadow-lg">
+      <div class="modal-header border-0">
+        <h5 class="modal-title text-primary fw-bold">State-Level Sports Championship</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <img src="{{ url_for('static', filename='achievement2.jpg') }}" class="w-100 rounded-3 mb-3" alt="">
+        <p class="text-muted">Our school’s football team won the 2025 State-Level Championship with outstanding teamwork, discipline, and skill. The final match was held in Salt Lake Stadium, and our team emerged victorious with a 3–1 score!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 3 -->
+<div class="modal fade" id="modal3" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content rounded-4 shadow-lg">
+      <div class="modal-header border-0">
+        <h5 class="modal-title text-primary fw-bold">Top Academic Results</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <img src="{{ url_for('static', filename='achievement3.jpg') }}" class="w-100 rounded-3 mb-3" alt="">
+        <p class="text-muted">This year, our students achieved a record-breaking academic performance with a 98% pass rate. Several students scored above 95%, and many received district-level recognition for their excellence.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .achievements-section {
+    background: linear-gradient(135deg, #e3f2fd, #e8f5e9);
+    min-height: 100vh;
+  }
+
+  .achievement-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .achievement-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .achievement-img {
+    height: 220px;
+    object-fit: cover;
+  }
+
+  .modal-content {
+    border-radius: 20px;
+  }
+
+  .modal-body img {
+    transition: transform 0.4s ease;
+  }
+
+  .modal-body img:hover {
+    transform: scale(1.03);
+  }
+</style>
+{% endblock %}

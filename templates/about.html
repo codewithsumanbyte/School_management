@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}About School | School Portal{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <!-- Headmaster Section -->
+  <div class="text-center mb-5">
+    <h2 class="text-primary fw-bold">Message from Our Headmaster</h2>
+    <img src="{{ url_for('static', filename=headmaster.jpg) }}" 
+         alt="Headmaster" 
+         class="rounded-circle mb-3" 
+         width="150" 
+         height="150">
+
+    <h3>{{ headmaster.name }}</h3>
+    <p class="text-secondary">{{ headmaster.message }}</p>
+  </div>
+
+  <!-- School Overview -->
+  <div class="mb-5">
+    <h2 class="text-primary fw-bold text-center mb-3">About Our School</h2>
+    <p class="text-center text-secondary fs-5">
+      Barrackpore Cantonment Vidyapith is one of the oldest Hindi medium schools in Barrackpore, Kolkata, teaching grades from V to XII under the West Bengal Board of Secondary Education and the West Bengal Council of Higher Secondary Education.
+      It is a Higher Secondary School with Science, Commerce, and Arts streams. This school has been dedicated to providing quality education for over 50 years, focusing on academic excellence, co-curricular activities, and holistic development of students.
+    </p>
+  </div>
+
+  <!-- Photos Carousel -->
+  <div id="schoolPhotosCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      {% for photo in photos %}
+      <div class="carousel-item {% if loop.first %}active{% endif %}">
+        <img src="{{ url_for('static', filename=photo) }}" class="d-block w-100 rounded" alt="School Photo">
+      </div>
+      {% endfor %}
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#schoolPhotosCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#schoolPhotosCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+  <!-- Videos Section -->
+  <div class="mb-5">
+    <h2 class="text-primary fw-bold text-center mb-4">Our Campus & Events</h2>
+    <div class="row g-4 justify-content-center">
+      {% for video in videos %}
+      <div class="col-md-6">
+        <video controls class="w-100 rounded shadow-sm">
+          <source src="{{ url_for('static', filename=video) }}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Staff Section -->
+  <div class="mb-5">
+    <h2 class="text-primary fw-bold text-center mb-4">Meet Our Staff</h2>
+    <div class="row g-4 justify-content-center">
+      {% for member in staff %}
+      <div class="col-md-4 text-center">
+        <div class="card shadow-sm h-100">
+          <img src="{{ url_for('static', filename=member.photo) }}" class="card-img-top rounded" alt="{{ member.name }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ member.name }}</h5>
+            <p class="card-text text-secondary">{{ member.role }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+{% endblock %}
